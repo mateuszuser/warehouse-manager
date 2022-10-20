@@ -1,7 +1,7 @@
 import csv
-from tkinter.filedialog import asksaveasfilename, askopenfilename
-from tkinter import *
-from tkinter import Tk
+#from tkinter.filedialog import asksaveasfilename, askopenfilename
+#from tkinter import *
+#from tkinter import Tk
 
 SOLD_ITEMS = {}
 
@@ -100,39 +100,41 @@ def export_items_to_csv():
                         writer.writerow({"Name": ITEM.name, "Quantity": ITEM.quantity, "Unit": ITEM.unit, "Unit price (PLN)": ITEM.unit_price})
 
 def export_sales_to_csv():
-    try:
-        root = Tk()
-        root.attributes("-topmost", True)
-        root.withdraw()
-        data = [("csv file(*.csv)","*.csv")]
-        file = asksaveasfilename(parent=root, filetypes = data, defaultextension = data)
-        with open(file, "w", newline='') as csvfile:
-            fieldnames = ["Name", "Quantity", "Unit", "Unit price (PLN)"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            for key, SOLD_ITEM in SOLD_ITEMS.items():
-                writer.writerow({"Name": SOLD_ITEM.name, "Quantity": SOLD_ITEM.quantity, "Unit": SOLD_ITEM.unit, "Unit price (PLN)": SOLD_ITEM.unit_price})
-    except FileNotFoundError:
-                print("File not found. Check the path variable and filename")
+        pass
+#    try:
+#        root = Tk()
+#        root.attributes("-topmost", True)
+#        root.withdraw()
+#        data = [("csv file(*.csv)","*.csv")]
+#        file = asksaveasfilename(parent=root, filetypes = data, defaultextension = data)
+#        with open(file, "w", newline='') as csvfile:
+#            fieldnames = ["Name", "Quantity", "Unit", "Unit price (PLN)"]
+#            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+#            writer.writeheader()
+#            for key, SOLD_ITEM in SOLD_ITEMS.items():
+#                writer.writerow({"Name": SOLD_ITEM.name, "Quantity": SOLD_ITEM.quantity, "Unit": SOLD_ITEM.unit, "Unit price (PLN)": SOLD_ITEM.unit_price})
+#    except FileNotFoundError:
+#                print("File not found. Check the path variable and filename")
 
 def load_items_from_csv():   
-        try:
-                root = Tk()
-                root.attributes("-topmost", True)
-                root.withdraw()
-                data = [("csv file(*.csv)","*.csv")]    
-                file = askopenfilename(parent=root, filetypes = data, defaultextension = data)
-                
-                with open(file, newline='') as csvfile:
-                        reader = csv.DictReader(csvfile)
-                        for row in reader:
-                                print(row["Name"])
-                                if row["Name"] in ITEMS:
-                                        new_quantity = float(ITEMS[row["Name"]].quantity) + float(row["Quantity"])
-                                        work_dict = Product(name = row["Name"], quantity = new_quantity, unit= row["Unit"], unit_price= row["Unit price (PLN)"])
-                                        ITEMS[work_dict.name] = work_dict
-                                else:
-                                        work_dict = Product(name = row["Name"], quantity = row["Quantity"], unit= row["Unit"], unit_price= row["Unit price (PLN)"])                    
-                                        ITEMS[work_dict.name] = work_dict
-        except FileNotFoundError:
-                print("File not found. Check the path variable and filename")
+        pass
+#        try:
+#                root = Tk()
+#                root.attributes("-topmost", True)
+#                root.withdraw()
+#                data = [("csv file(*.csv)","*.csv")]    
+#                file = askopenfilename(parent=root, filetypes = data, defaultextension = data)
+#                
+#                with open(file, newline='') as csvfile:
+#                        reader = csv.DictReader(csvfile)
+#                        for row in reader:
+#                                print(row["Name"])
+#                                if row["Name"] in ITEMS:
+#                                        new_quantity = float(ITEMS[row["Name"]].quantity) + float(row["Quantity"])
+#                                        work_dict = Product(name = row["Name"], quantity = new_quantity, unit= row["Unit"], unit_price= row["Unit price (PLN)"])
+#                                        ITEMS[work_dict.name] = work_dict
+#                                else:
+#                                        work_dict = Product(name = row["Name"], quantity = row["Quantity"], unit= row["Unit"], unit_price= row["Unit price (PLN)"])                    
+#                                        ITEMS[work_dict.name] = work_dict
+#        except FileNotFoundError:
+#                print("File not found. Check the path variable and filename")
