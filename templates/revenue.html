@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<br>
+<h1>Revenue breakedown (PLN)</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <th>#</th>
+            <th>Income</th>
+            <th>Costs</th>    
+            <th>Revenue</th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>{{ '%0.2f' % incomes|float }} PLN</td>
+                    <td>{{ '%0.2f' % costs|float }} PLN</td>
+                    <td>{{ '%0.2f' % revenue_round|float }} PLN</td>                       
+            
+                </tr>
+            </tbody>
+    </table>           
+</div>
+{% endblock %}

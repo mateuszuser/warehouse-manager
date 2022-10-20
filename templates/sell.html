@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<br>
+<h1>Warehouse manager</h1>
+
+<div class="table-responsive">
+
+    <form method="POST" action="/sell/{{ product }}">
+        {{ form.hidden_tag() }}
+        <table class="table table-striped table-sm">
+            {% for field in form if field.widget.input_type != 'hidden' %}
+            <thead>
+                <tr>
+                    <p>{{ product }} avaible quantity: {{ avaible_quantity }}</p>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                    <td><input type="submit" value="SELL"></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        
+    </form>       
+    
+
+</div>
+
+{% endblock %}

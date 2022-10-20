@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<br>
+<h1>Warehouse manager</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <th>#</th>
+            <th>NAME</th>
+            <th>QUANTITY</th>
+            <th>UNIT</th>
+            <th>UNIT PRICE (PLN)</th>
+            <th></th>
+            </thead>
+
+            <tbody>
+            {% for key, ITEM in ITEMS.items() %}
+            <tr>
+                    <td></td>
+                    <td>{{ ITEM.name }}</td>
+                    <td>{{ ITEM.quantity }}</td>
+                    <td>{{ ITEM.unit }}</td>
+                    <td>{{ ITEM.unit_price }}</td>
+                    <form action="/sell/{{ ITEM.name }}">
+                            <td><input type="submit" value="Sell Product"></td>
+                    </form>
+            </tr>
+            {% endfor %}
+            <tr>
+                <form method="POST" action="/products">
+                        {{ form.hidden_tag() }}
+                        <td></td>
+                        {% for field in form if field.widget.input_type != 'hidden' %}         
+                        <td>{{ field }} {% if field.flags.required %}*{% endif %}</td>
+                        {% endfor %}
+                        <td><input type="submit" value="Add Product"></td>
+                </form>       
+            </tr>
+        
+            </tbody>
+            
+    </table>
+        
+            
+</div>
+
+{% endblock %}
