@@ -57,3 +57,7 @@ def revenue():
     incomes = round(get_incomes(), 2)
     revenue_round = round((round(get_incomes(), 2) - round(get_costs(), 2)), 2)
     return render_template("revenue.html", costs=costs, incomes=incomes, revenue_round=revenue_round)
+
+
+if __name__ == "__main__":
+    app.run()
